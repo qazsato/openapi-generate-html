@@ -1,11 +1,13 @@
 # openapi-generate-html
 
-Generate standalone HTML from OpenAPI Specification. 📗✨
+Generate standalone HTML from OpenAPI Specification. 
 
 ## Feature
 
 One of the key benefits of `openapi-generate-html` is its portability.
+
 By generating a single, self-contained HTML file, all required assets (CSS, JavaScript, and OpenAPI data) are embedded directly in the document.
+
 This makes it easy to:
 
 1. **Share** : the file as a single, standalone document without additional dependencies.
@@ -14,13 +16,29 @@ This makes it easy to:
 
 This portability makes `openapi-generate-html` ideal for situations where reliable, standalone documentation is required.
 
+```mermaid
+---
+title: Using openapi-generate-html
+---
+flowchart LR
+    subgraph After
+    A1["`.html<br> **All-In-One File!** `"]
+    end
+    subgraph Before
+    B1[.html] -.-> B2@{ shape: procs, label: ".json"}
+    B1[.html] -.-> B3@{ shape: procs, label: ".js"}
+    B1[.html] -.-> B4@{ shape: procs, label: ".css"}
+    end
+    Before ---> After
+```
+
 ## How to use
 
 ```bash
 npx openapi-generate-html -i openapi.json
 ```
 
-Use Dark theme 🌙
+Use dark theme 🌙
 
 ```bash
 npx openapi-generate-html -i openapi.json --theme=dark
@@ -38,6 +56,14 @@ npx openapi-generate-html -i openapi.json --theme=dark
 | --ui          | "stoplight"    | Choose UI (stoplight / swagger / redoc) |
 | --theme       | "light"        | Choose Theme (light / dark)             |
 | --title       | "OpenAPI Docs" | Title of the HTML page                  |
+
+## UI Pattern
+
+|           | Light                                                                       | Dark 🧪                                                                  |
+| --------- | :-------------------------------------------------------------------------: | :----------------------------------------------------------------------: |
+| Stoplight | ![Stoplight Light](docs/stoplight_light.png) `--ui=stoplight --theme=light` | ![Stoplight Dark](docs/stoplight_dark.png) `--ui=stoplight --theme=dark` |
+| Swagger   | ![Swagger Light](docs/swagger_light.png) `--ui=swagger --theme=light`       | ![Swagger Dark](docs/swagger_dark.png) `--ui=swagger --theme=dark`       |
+| Redoc     | ![Redoc Light](docs/redoc_light.png) `--ui=redoc --theme=light`             | ![Redoc Dark](docs/redoc_dark.png) `--ui=redoc --theme=dark`             |
 
 ## License
 
