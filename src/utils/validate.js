@@ -1,3 +1,4 @@
+import yaml from 'js-yaml'
 import { InvalidArgumentError } from 'commander'
 import { UI, THEME, ENABLE_INPUT_EXTS } from '../constants/index.js'
 
@@ -53,7 +54,37 @@ export function validateInquirerOutput(output) {
   return true
 }
 
+export function isValidUrl(string) {
+  try {
+    new URL(string)
+    return true
+  } catch {
+    return false
+  }
+}
+
+export function isJSON(string) {
+  try {
+    JSON.parse(string)
+    return true
+  } catch {
+    return false
+  }
+}
+
+export function isYAML(string) {
+  try {
+    yaml.load(string)
+    return true
+  } catch {
+    return false
+  }
+}
+
 function isValidInput(input) {
+  if (isValidUrl(input)) {
+    return true
+  }
   return ENABLE_INPUT_EXTS.some((ext) => input.endsWith(ext))
 }
 
