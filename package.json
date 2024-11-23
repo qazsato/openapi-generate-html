@@ -1,13 +1,13 @@
 {
-  "name": "openapi-inline-html",
+  "name": "openapi-generate-html",
   "version": "0.3.1",
   "description": "Generate standalone HTML from OpenAPI Specification",
   "bin": {
-    "openapi-inline-html": "./index.mjs"
+    "openapi-generate-html": "./index.mjs"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/qazsato/openapi-inline-html.git"
+    "url": "https://github.com/qazsato/openapi-generate-html.git"
   },
   "scripts": {
     "lint": "eslint",

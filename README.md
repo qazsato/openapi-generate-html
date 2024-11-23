@@ -1,10 +1,10 @@
-# openapi-inline-html
+# openapi-generate-html
 
 Generate standalone HTML from OpenAPI Specification. 📗✨
 
 ## Feature
 
-One of the key benefits of `openapi-inline-html` is its portability.
+One of the key benefits of `openapi-generate-html` is its portability.
 By generating a single, self-contained HTML file, all required assets (CSS, JavaScript, and OpenAPI data) are embedded directly in the document.
 This makes it easy to:
 
@@ -12,18 +12,18 @@ This makes it easy to:
 2. **Hosting** : the file on any server or serve it locally, with no need for additional resources or configurations.
 3. **Distribute** : the file via email or other methods, knowing that it will display consistently across environments.
 
-This portability makes `openapi-inline-html` ideal for situations where reliable, standalone documentation is required.
+This portability makes `openapi-generate-html` ideal for situations where reliable, standalone documentation is required.
 
 ## How to use
 
 ```bash
-npx openapi-inline-html -i openapi.json
+npx openapi-generate-html -i openapi.json
 ```
 
 Use Dark theme 🌙
 
 ```bash
-npx openapi-inline-html -i openapi.json --theme=dark
+npx openapi-generate-html -i openapi.json --theme=dark
 ```
 
 > [!NOTE]
