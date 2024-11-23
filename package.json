@@ -1,6 +1,6 @@
 {
   "name": "openapi-inline-html",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Generate standalone HTML from OpenAPI Specification",
   "bin": {
     "openapi-inline-html": "./index.mjs"
