@@ -2,8 +2,9 @@
   "name": "openapi-generate-html",
   "version": "0.3.2",
   "description": "Generate standalone HTML from OpenAPI Specification",
+  "type": "module",
   "bin": {
-    "openapi-generate-html": "./index.mjs"
+    "openapi-generate-html": "./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -12,7 +13,7 @@
   "scripts": {
     "lint": "eslint",
     "lint:fix": "eslint --fix",
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "keywords": [
     "OpenAPI",

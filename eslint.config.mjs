@@ -8,6 +8,7 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.node,
+        ...globals.jest,
         SwaggerUIBundle: 'readonly',
         Redoc: 'readonly',
       },
