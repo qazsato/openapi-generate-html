@@ -7,7 +7,6 @@ import ejs from 'ejs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import $RefParser from '@apidevtools/json-schema-ref-parser'
-import cycle from 'cycle'
 import { UI } from './constants/index.js'
 import {
   validateCommandInput,
@@ -128,14 +127,16 @@ async function renderOpenApiHtml(result) {
     )
   }
 
-  const apiDocs = await $RefParser.dereference(rawApiDocs) // resolve $ref
+  // resolve $ref pointers
+  // https://github.com/APIDevTools/json-schema-ref-parser/blob/main/docs/ref-parser.md#bundleschema-options-callback
+  const apiDocs = await $RefParser.bundle(rawApiDocs)
 
   return ejs.render(template, {
     theme,
     title,
     jsContent,
     cssContent,
-    apiDocs: JSON.stringify(cycle.decycle(apiDocs)),
+    apiDocs: JSON.stringify(apiDocs),
   })
 }
 
