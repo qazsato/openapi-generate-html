@@ -17,7 +17,9 @@
   },
   "keywords": [
     "OpenAPI",
-    "Stoplight"
+    "Stoplight",
+    "Swagger",
+    "Redoc"
   ],
   "author": "qazsato <qazsato@gmail.com>",
   "license": "MIT",
