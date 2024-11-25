@@ -15,6 +15,11 @@ describe('validateCommandInput', () => {
     )
   })
 
+  test('should return input if valid input url is provided', () => {
+    const input = 'https://example.com/openapi'
+    expect(validateCommandInput(input)).toEqual(input)
+  })
+
   test('should return input if valid input file is provided', () => {
     const input = 'valid-file.json'
     expect(validateCommandInput(input)).toEqual(input)
@@ -72,6 +77,11 @@ describe('validateInquirerInput', () => {
     expect(validateInquirerInput(input)).toEqual(
       'File must be a JSON or YAML file!',
     )
+  })
+
+  test('should return true if valid input url is provided', () => {
+    const input = 'https://example.com/openapi'
+    expect(validateInquirerInput(input)).toEqual(true)
   })
 
   test('should return true if valid input file is provided', () => {
