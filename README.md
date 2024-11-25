@@ -51,7 +51,7 @@ npx openapi-generate-html -i openapi.json --theme=dark
 
 | command       | default        | description                             |
 | ------------- | -------------- | --------------------------------------- |
-| --input (-i)  |                | Input OpenAPI JSON / YAML file path     |
+| --input (-i)  |                | Input OpenAPI file path or URL          |
 | --output (-o) | "openapi.html" | Output HTML file name                   |
 | --ui          | "stoplight"    | Choose UI (stoplight / swagger / redoc) |
 | --theme       | "light"        | Choose Theme (light / dark)             |

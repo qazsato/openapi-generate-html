@@ -15,6 +15,9 @@ import {
   validateCommandTheme,
   validateInquirerInput,
   validateInquirerOutput,
+  isValidUrl,
+  isJSON,
+  isYAML,
 } from './utils/validate.js'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -39,7 +42,7 @@ function getCliOptions() {
   program
     .option(
       '-i, --input <input>',
-      'Input OpenAPI JSON / YAML file',
+      'Input OpenAPI file or URL',
       validateCommandInput,
     )
     .option(
@@ -71,7 +74,7 @@ async function askQuestions(options) {
     {
       type: 'input',
       name: 'input',
-      message: 'Please provide the path to your OpenAPI JSON file:',
+      message: 'Please provide the path to your OpenAPI file or URL:',
       default: './openapi.json',
       validate: validateInquirerInput,
       when: !options.input,
@@ -106,12 +109,17 @@ async function renderOpenApiHtml(result) {
   )
 
   const input = result.input
-  const rawApiDocsText = fs.readFileSync(input, 'utf-8')
-  const fileExtension = path.extname(input).toLowerCase()
+  let rawApiDocsText
+  if (isValidUrl(input)) {
+    rawApiDocsText = await (await fetch(input)).text()
+  } else {
+    rawApiDocsText = fs.readFileSync(input, 'utf-8')
+  }
+
   let rawApiDocs
-  if (fileExtension === '.json') {
+  if (isJSON(rawApiDocsText)) {
     rawApiDocs = JSON.parse(rawApiDocsText)
-  } else if (fileExtension === '.yaml' || fileExtension === '.yml') {
+  } else if (isYAML(rawApiDocsText)) {
     rawApiDocs = yaml.load(rawApiDocsText)
   } else {
     throw new Error(
@@ -119,7 +127,9 @@ async function renderOpenApiHtml(result) {
     )
   }
 
-  const apiDocs = await $RefParser.dereference(rawApiDocs) // resolve $ref
+  // resolve $ref pointers
+  // https://github.com/APIDevTools/json-schema-ref-parser/blob/main/docs/ref-parser.md#bundleschema-options-callback
+  const apiDocs = await $RefParser.bundle(rawApiDocs)
 
   return ejs.render(template, {
     theme,
