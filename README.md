@@ -16,21 +16,7 @@ This makes it easy to:
 
 This portability makes `openapi-generate-html` ideal for situations where reliable, standalone documentation is required.
 
-```mermaid
----
-title: Using openapi-generate-html
----
-flowchart LR
-    subgraph After
-    A1["`.html<br> **All-In-One File!** `"]
-    end
-    subgraph Before
-    B1[.html] -.-> B2@{ shape: procs, label: ".json"}
-    B1[.html] -.-> B3@{ shape: procs, label: ".js"}
-    B1[.html] -.-> B4@{ shape: procs, label: ".css"}
-    end
-    Before ---> After
-```
+![Using openapi-generate-html](docs/mermaid.png)
 
 ## How to use
 
