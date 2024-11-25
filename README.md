@@ -56,6 +56,7 @@ npx openapi-generate-html -i openapi.json --theme=dark
 | --ui          | "stoplight"    | Choose UI (stoplight / swagger / redoc) |
 | --theme       | "light"        | Choose Theme (light / dark)             |
 | --title       | "OpenAPI Docs" | Title of the HTML page                  |
+| --description |                | Description of the HTML page            |
 
 ## UI Pattern
 

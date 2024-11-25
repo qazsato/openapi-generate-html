@@ -52,6 +52,7 @@ function getCliOptions() {
     )
     .option('--ui <ui>', `Choose UI (${UI.join(', ')})`, validateCommandUi)
     .option('--title <title>', 'Title of the HTML page', 'OpenAPI Docs')
+    .option('--description <description>', 'Description of the HTML page', '')
     .option(
       '--theme <theme>',
       'Theme of the HTML page. Choose from light or dark.',
@@ -92,8 +93,6 @@ async function askQuestions(options) {
 
 async function renderOpenApiHtml(result) {
   const ui = result.ui
-  const theme = result.theme
-  const title = result.title
 
   const template = fs.readFileSync(
     path.resolve(__dirname, `../resources/${ui}/template.ejs`),
@@ -132,8 +131,9 @@ async function renderOpenApiHtml(result) {
   const apiDocs = await $RefParser.bundle(rawApiDocs)
 
   return ejs.render(template, {
-    theme,
-    title,
+    theme: result.theme,
+    title: result.title,
+    description: result.description,
     jsContent,
     cssContent,
     apiDocs: JSON.stringify(apiDocs),
