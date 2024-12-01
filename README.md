@@ -1,5 +1,9 @@
 # openapi-generate-html
 
+![test](https://github.com/qazsato/maplibre-gl-compass/actions/workflows/test.yml/badge.svg)
+[![npm version](https://badge.fury.io/js/maplibre-gl-compass.svg)](https://badge.fury.io/js/maplibre-gl-compass)
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Generate standalone HTML from OpenAPI Specification. 
 
 ## Feature
@@ -16,7 +20,7 @@ This makes it easy to:
 
 This portability makes `openapi-generate-html` ideal for situations where reliable, standalone documentation is required.
 
-![Using openapi-generate-html](docs/mermaid.png)
+![Using openapi-generate-html](docs/images/mermaid.png)
 
 ## How to use
 
@@ -46,11 +50,11 @@ npx openapi-generate-html -i openapi.json --theme=dark
 
 ## UI Pattern
 
-|           | Light                                                                       | Dark 🧪                                                                  |
-| --------- | :-------------------------------------------------------------------------: | :----------------------------------------------------------------------: |
-| Stoplight | ![Stoplight Light](docs/stoplight_light.png) `--ui=stoplight --theme=light` | ![Stoplight Dark](docs/stoplight_dark.png) `--ui=stoplight --theme=dark` |
-| Swagger   | ![Swagger Light](docs/swagger_light.png) `--ui=swagger --theme=light`       | ![Swagger Dark](docs/swagger_dark.png) `--ui=swagger --theme=dark`       |
-| Redoc     | ![Redoc Light](docs/redoc_light.png) `--ui=redoc --theme=light`             | ![Redoc Dark](docs/redoc_dark.png) `--ui=redoc --theme=dark`             |
+|           | Light                                                                                                                                                                                | Dark 🧪                                                                                                                                                                         |
+| --------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| Stoplight | ![Stoplight Light](docs/images/stoplight_light.png) <br> `--ui=stoplight --theme=light` <br> [sample](https://qazsato.github.io/openapi-generate-html/exmaples/stoplight-light.html) | ![Stoplight Dark](docs/images/stoplight_dark.png) <br> `--ui=stoplight --theme=dark` <br> [sample](https://qazsato.github.io/openapi-generate-html/exmaples/stoplight-dark.html) |
+| Swagger   | ![Swagger Light](docs/images/swagger_light.png) <br> `--ui=swagger --theme=light` <br> [sample](https://qazsato.github.io/openapi-generate-html/exmaples/swagger-light.html)         | ![Swagger Dark](docs/images/swagger_dark.png) <br> `--ui=swagger --theme=dark` <br> [sample](https://qazsato.github.io/openapi-generate-html/exmaples/swagger-dark.html)         |
+| Redoc     | ![Redoc Light](docs/images/redoc_light.png) <br> `--ui=redoc --theme=light` <br> [sample](https://qazsato.github.io/openapi-generate-html/exmaples/redoc-light.html)                 | ![Redoc Dark](docs/images/redoc_dark.png) <br> `--ui=redoc --theme=dark` <br> [sample](https://qazsato.github.io/openapi-generate-html/exmaples/redoc-dark.html)                 |
 
 ## License
 
