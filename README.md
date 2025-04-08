@@ -1,8 +1,9 @@
 # openapi-generate-html
 
-![test](https://github.com/qazsato/maplibre-gl-compass/actions/workflows/test.yml/badge.svg)
-[![npm version](https://badge.fury.io/js/maplibre-gl-compass.svg)](https://badge.fury.io/js/maplibre-gl-compass)
-[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+![test](https://github.com/qazsato/openapi-generate-html/actions/workflows/test.yml/badge.svg)
+![NPM Version](https://img.shields.io/npm/v/openapi-generate-html?color=61d800)
+![NPM Downloads](https://img.shields.io/npm/dm/openapi-generate-html?color=61d800)
+![NPM License](https://img.shields.io/npm/l/openapi-generate-html?color=61d800)
 
 Generate standalone HTML from OpenAPI Specification. 
 
