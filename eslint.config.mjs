@@ -11,6 +11,7 @@ export default [
         ...globals.jest,
         SwaggerUIBundle: 'readonly',
         Redoc: 'readonly',
+        autoComplete: 'readonly',
       },
     },
   },

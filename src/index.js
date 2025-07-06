@@ -99,8 +99,16 @@ async function renderOpenApiHtml(result) {
     path.resolve(__dirname, `../resources/${ui}/template.ejs`),
     'utf-8',
   )
+  const cssCommonContent = fs.readFileSync(
+    path.resolve(__dirname, `../resources/common/index.css`),
+    'utf-8',
+  )
   const cssContent = fs.readFileSync(
     path.resolve(__dirname, `../resources/${ui}/index.css`),
+    'utf-8',
+  )
+  const jsCommonContent = fs.readFileSync(
+    path.resolve(__dirname, `../resources/common/index.js`),
     'utf-8',
   )
   const jsContent = fs.readFileSync(
@@ -121,7 +129,9 @@ async function renderOpenApiHtml(result) {
     theme: result.theme,
     title: result.title,
     description: result.description,
+    jsCommonContent,
     jsContent,
+    cssCommonContent,
     cssContent,
     apiDocs,
   })

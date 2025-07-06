@@ -12,3 +12,26 @@ html[data-theme="dark"] {
       filter: invert(100%) hue-rotate(180deg);
   }
 }
+
+.method-get {
+  background-color: #61affe;
+}
+
+.method-post {
+  background-color: #49cc90;
+}
+
+.method-put,
+.method-patch {
+  background-color: #fca130;
+}
+
+.method-delete {
+  background-color: #f93e3e;
+}
+
+.method-head,
+.method-options,
+.method-trace {
+  background-color: #9e9e9e;
+}
