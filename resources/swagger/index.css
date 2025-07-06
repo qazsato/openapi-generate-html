@@ -21,17 +21,26 @@ html[data-theme="dark"] {
   background-color: #49cc90;
 }
 
-.method-put,
-.method-patch {
+.method-put {
   background-color: #fca130;
+}
+
+.method-patch {
+  background-color: #50e3c2;
 }
 
 .method-delete {
   background-color: #f93e3e;
 }
 
-.method-head,
-.method-options,
+.method-head {
+  background-color: #9012fe;
+}
+
+.method-options {
+  background-color: #0d5aa7;
+}
+
 .method-trace {
-  background-color: #9e9e9e;
+  background-color: #000;
 }

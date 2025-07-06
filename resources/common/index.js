@@ -79,7 +79,9 @@ class SearchDialog {
           path,
           name: `${method.toUpperCase()} ${path}`,
           operationId: paths[path][method].operationId,
-          tag: paths[path][method].tags[0] || 'default',
+          tag: paths[path][method].tags
+            ? paths[path][method].tags[0]
+            : 'default',
         })
       }
     }
