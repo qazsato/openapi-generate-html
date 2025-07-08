@@ -122,10 +122,46 @@ const redark = {
   },
 }
 
-let option = {}
+let option = {
+  disableSearch: true,
+}
 if (document.documentElement.getAttribute('data-theme') === 'dark') {
   option = { theme: redark }
 }
 
 // ref. https://redocly.com/docs/redoc/deployment/html#the-redoc-object
 Redoc.init(window.apiDocs, option, document.getElementById('redoc-container'))
+
+// ref. https://developer.mozilla.org/en-US/docs/Web/API/Navigator/platform#examples
+const modifierKeyPrefix =
+  navigator.platform.startsWith('Mac') || navigator.platform === 'iPhone'
+    ? '⌘' // command key
+    : '^' // control key
+
+const searchButton = document.querySelector('#search-button')
+searchButton.addEventListener('click', () => searchDialog.show())
+searchButton.querySelector('.text').textContent =
+  `Search ${modifierKeyPrefix}+K`
+
+// eslint-disable-next-line no-undef
+const searchDialog = new SearchDialog(
+  'search-dialog',
+  'auto-complete',
+  window.apiDocs,
+)
+searchDialog.on('select', (selection) => {
+  const tag = selection.tag
+  const operationId = selection.operationId
+  const url = new URL(location.href)
+  url.hash = `#tag/${tag}/operation/${operationId}`
+  location.href = url.toString()
+  searchDialog.hide()
+})
+
+document.addEventListener('keydown', function (e) {
+  const isCmdOrCtrl = modifierKeyPrefix === '⌘' ? e.metaKey : e.ctrlKey
+  if (isCmdOrCtrl && e.key.toLowerCase() === 'k') {
+    searchDialog.show()
+    e.preventDefault()
+  }
+})

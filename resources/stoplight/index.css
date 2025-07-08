@@ -14,3 +14,35 @@
     background-color: var(--color-canvas-pure);
   }
 }
+
+.method-get {
+  background-color: #05b870;
+}
+
+.method-post {
+  background-color: #19abff;
+}
+
+.method-put {
+  background-color: #f46d2a;
+}
+
+.method-patch {
+  background-color: #f46d2a;
+}
+
+.method-delete {
+  background-color: #f05151;
+}
+
+.method-head {
+  background-color: rgb(144, 97, 249);
+}
+
+.method-options {
+  background-color: rgb(13, 90, 167);
+}
+
+.method-trace {
+  background-color: rgb(13, 11, 40);
+}

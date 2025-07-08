@@ -4,3 +4,5 @@ src/**/*.test.ts
 eslint.config.mjs
 .prettierrc
 .gitignore
+.claude/
+CLAUDE.md

@@ -1,0 +1,118 @@
+#search-button {
+  position: fixed;
+  top: 28px;
+  right: 28px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  padding: 4px 12px 4px 8px;
+  cursor: pointer;
+
+  .icon {
+    font-size: 18px;
+    margin-right: 4px;
+  }
+}
+
+#search-dialog {
+  position: fixed;
+  top: 10px;
+  margin: 0 auto;
+  height: 100%;
+  background: transparent;
+  border: none;
+
+  .auto-complete-list {
+    max-height: 265px;
+  }
+}
+
+#auto-complete {
+  background-color: #fff;
+}
+
+.auto-complete-list {
+  .auto-complete-list-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    border-radius: 0;
+  }
+}
+
+.method-tag {
+  display: inline-block;
+  padding: 2px 0;
+  border-radius: 4px;
+  font-size: 11px;
+  color: #fff;
+  min-width: 54px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.endpoint-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.endpoint-path {
+  font-size: 13px;
+}
+
+.endpoint-summary {
+  font-size: 11px;
+  color: #666;
+}
+
+[data-theme=dark] {
+  #search-dialog::backdrop {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  #search-button {
+    background-color: #1f1f1f;
+    border: 1px solid #444;
+    color: #fff;
+  }
+
+  #auto-complete {
+    background-color: #1f1f1f;
+    border: 1px solid #444;
+    color: #fff;
+  }
+
+  .auto-complete-list {
+    background-color: #1f1f1f;
+    border: 1px solid #444;
+
+    .auto-complete-list-item {
+      background-color: #1f1f1f;
+      border-bottom: 1px solid #444;
+      color: #fff;
+
+      &:hover {
+        background-color: #333;
+      }
+    }
+
+    .auto-complete-list-item[aria-selected="true"] {
+      background-color: #333;
+    }
+  }
+
+  .endpoint-path {
+    color: #ccc;
+  }
+
+  .endpoint-summary {
+    color: #888;
+  }
+}
