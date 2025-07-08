@@ -1,4 +1,3 @@
-import yaml from 'js-yaml'
 import { InvalidArgumentError } from 'commander'
 import { UI, THEME, ENABLE_INPUT_EXTS } from '../constants/index.js'
 
@@ -22,8 +21,8 @@ export function validateCommandOutput(output) {
 }
 
 export function validateCommandUi(ui) {
-  if (!UI.includes(ui)) {
-    const message = `Please choose from: ${UI.join(', ')}.`
+  if (!Object.values(UI).includes(ui)) {
+    const message = `Please choose from: ${Object.values(UI).join(', ')}.`
     throw new InvalidArgumentError(message)
   }
   return ui
@@ -57,24 +56,6 @@ export function validateInquirerOutput(output) {
 export function isValidUrl(string) {
   try {
     new URL(string)
-    return true
-  } catch {
-    return false
-  }
-}
-
-export function isJSON(string) {
-  try {
-    JSON.parse(string)
-    return true
-  } catch {
-    return false
-  }
-}
-
-export function isYAML(string) {
-  try {
-    yaml.load(string)
     return true
   } catch {
     return false

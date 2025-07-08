@@ -2,11 +2,9 @@
 import { program } from 'commander'
 import inquirer from 'inquirer'
 import fs from 'fs'
-import yaml from 'js-yaml'
 import ejs from 'ejs'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import $RefParser from '@apidevtools/json-schema-ref-parser'
 import { UI } from './constants/index.js'
 import {
   validateCommandInput,
@@ -16,9 +14,8 @@ import {
   validateInquirerInput,
   validateInquirerOutput,
   isValidUrl,
-  isJSON,
-  isYAML,
 } from './utils/validate.js'
+import { parseOpenApi } from './utils/parser.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -50,7 +47,11 @@ function getCliOptions() {
       'Output HTML file name',
       validateCommandOutput,
     )
-    .option('--ui <ui>', `Choose UI (${UI.join(', ')})`, validateCommandUi)
+    .option(
+      '--ui <ui>',
+      `Choose UI (${Object.values(UI).join(', ')})`,
+      validateCommandUi,
+    )
     .option('--title <title>', 'Title of the HTML page', 'OpenAPI Docs')
     .option('--description <description>', 'Description of the HTML page', '')
     .option(
@@ -68,8 +69,8 @@ async function askQuestions(options) {
       type: 'list',
       name: 'ui',
       message: 'Which UI would you like to use?',
-      default: UI[0],
-      choices: UI,
+      default: UI.STOPLIGHT,
+      choices: Object.values(UI),
       when: !options.ui,
     },
     {
@@ -114,21 +115,7 @@ async function renderOpenApiHtml(result) {
   } else {
     rawApiDocsText = fs.readFileSync(input, 'utf-8')
   }
-
-  let rawApiDocs
-  if (isJSON(rawApiDocsText)) {
-    rawApiDocs = JSON.parse(rawApiDocsText)
-  } else if (isYAML(rawApiDocsText)) {
-    rawApiDocs = yaml.load(rawApiDocsText)
-  } else {
-    throw new Error(
-      'Unsupported file format. Please provide a .json or .yaml/.yml file.',
-    )
-  }
-
-  // resolve $ref pointers
-  // https://github.com/APIDevTools/json-schema-ref-parser/blob/main/docs/ref-parser.md#bundleschema-options-callback
-  const apiDocs = await $RefParser.bundle(rawApiDocs)
+  const apiDocs = await parseOpenApi(rawApiDocsText, ui)
 
   return ejs.render(template, {
     theme: result.theme,
@@ -136,7 +123,7 @@ async function renderOpenApiHtml(result) {
     description: result.description,
     jsContent,
     cssContent,
-    apiDocs: JSON.stringify(apiDocs),
+    apiDocs,
   })
 }
 

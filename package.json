@@ -1,6 +1,6 @@
 {
   "name": "openapi-generate-html",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Generate standalone HTML from OpenAPI Specification",
   "type": "module",
   "bin": {
@@ -24,9 +24,10 @@
   "author": "qazsato <qazsato@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@apidevtools/json-schema-ref-parser": "^11.7.2",
+    "@apidevtools/json-schema-ref-parser": "^14.1.0",
     "commander": "^12.1.0",
     "ejs": "^3.1.10",
+    "fast-safe-stringify": "^2.1.1",
     "inquirer": "^12.0.0",
     "js-yaml": "^4.1.0"
   },
