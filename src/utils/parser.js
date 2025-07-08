@@ -1,5 +1,5 @@
 import $RefParser from '@apidevtools/json-schema-ref-parser'
-import stringify from 'safe-stable-stringify'
+import stringify from 'fast-safe-stringify'
 import yaml from 'js-yaml'
 import { UI } from '../constants/index.js'
 
