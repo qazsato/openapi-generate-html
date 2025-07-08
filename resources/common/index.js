@@ -14,7 +14,7 @@ class SearchDialog {
       placeHolder: 'Search endpoints',
       data: {
         src: this.filterEndpoints(openapi),
-        keys: ['name'],
+        keys: ['method', 'path', 'summary'],
       },
       searchEngine: 'loose',
       threshold: 0,
@@ -28,8 +28,11 @@ class SearchDialog {
               const li = document.createElement('li')
               li.className = 'auto-complete-list-item'
               li.innerHTML = `
-              <span class="method-tag method-${item.value.method.toLowerCase()}">${item.value.method}</span>
-              <span class="endpoint-path">${item.value.path}</span>
+              <div class="method-tag method-${item.value.method.toLowerCase()}">${item.value.method}</div>
+              <div class="endpoint-info">
+                <div class="endpoint-path">${item.value.path}</div>
+                <div class="endpoint-summary">${item.value.summary}</div>
+              </div>
             `
               list.appendChild(li)
             })
@@ -77,11 +80,11 @@ class SearchDialog {
         endpoints.push({
           method: method.toUpperCase(),
           path,
-          name: `${method.toUpperCase()} ${path}`,
           operationId: paths[path][method].operationId,
           tag: paths[path][method].tags
             ? paths[path][method].tags[0]
             : 'default',
+          summary: paths[path][method].summary || '',
         })
       }
     }

@@ -24,6 +24,10 @@
   height: 100%;
   background: transparent;
   border: none;
+
+  .auto-complete-list {
+    max-height: 265px;
+  }
 }
 
 #auto-complete {
@@ -50,10 +54,22 @@
   color: #fff;
   min-width: 54px;
   text-align: center;
+  flex-shrink: 0;
+}
+
+.endpoint-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .endpoint-path {
   font-size: 13px;
+}
+
+.endpoint-summary {
+  font-size: 11px;
+  color: #666;
 }
 
 [data-theme=dark] {
@@ -94,5 +110,9 @@
 
   .endpoint-path {
     color: #ccc;
+  }
+
+  .endpoint-summary {
+    color: #888;
   }
 }
