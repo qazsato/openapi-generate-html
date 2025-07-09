@@ -14,7 +14,7 @@ class SearchDialog {
       placeHolder: 'Search endpoints',
       data: {
         src: this.filterEndpoints(openapi),
-        keys: ['method', 'path', 'summary'],
+        keys: ['searchKey'],
       },
       searchEngine: 'loose',
       threshold: 0,
@@ -77,14 +77,16 @@ class SearchDialog {
         if (method === 'parameters') {
           continue
         }
+        const summary = paths[path][method].summary || ''
         endpoints.push({
+          searchKey: `${method} ${path} ${summary}`,
           method: method.toUpperCase(),
           path,
           operationId: paths[path][method].operationId,
           tag: paths[path][method].tags
             ? paths[path][method].tags[0]
             : 'default',
-          summary: paths[path][method].summary || '',
+          summary,
         })
       }
     }
