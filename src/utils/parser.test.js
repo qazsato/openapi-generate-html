@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest'
 import { parseOpenApi } from './parser.js'
 import { UI } from '../constants/index.js'
 
