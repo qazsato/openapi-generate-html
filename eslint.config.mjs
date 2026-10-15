@@ -4,6 +4,9 @@ import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 
 export default [
   {
+    ignores: ['resources/vendor/'],
+  },
+  {
     languageOptions: {
       globals: {
         ...globals.browser,

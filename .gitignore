@@ -3,3 +3,4 @@ node_modules
 openapi.json
 openapi.yaml
 openapi.html
+resources/vendor

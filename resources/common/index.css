@@ -12,7 +12,9 @@
   cursor: pointer;
 
   .icon {
-    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
     margin-right: 4px;
   }
 }

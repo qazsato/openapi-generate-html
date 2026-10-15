@@ -116,6 +116,12 @@ async function renderOpenApiHtml(result) {
     'utf-8',
   )
 
+  const vendor = (name) =>
+    fs.readFileSync(
+      path.resolve(__dirname, `../resources/vendor/${name}`),
+      'utf-8',
+    )
+
   const input = result.input
   let rawApiDocsText
   if (isValidUrl(input)) {
@@ -134,6 +140,7 @@ async function renderOpenApiHtml(result) {
     cssCommonContent,
     cssContent,
     apiDocs,
+    vendor,
   })
 }
 

@@ -8,6 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run lint` - Run ESLint for code linting
 - `npm run lint:fix` - Run ESLint with automatic fixes
 - `npm run test` - Run Vitest tests
+- `npm run prepare` - Copy third-party UI assets into `resources/vendor/` (runs automatically on `npm install`)
 
 ### Testing the CLI Tool
 - `npx openapi-generate-html -i openapi.json` - Generate HTML from OpenAPI spec
@@ -29,6 +30,7 @@ This is a Node.js CLI tool that generates standalone HTML documentation from Ope
 - Three UI options: Stoplight Elements, Swagger UI, Redoc
 - Each UI has: `template.ejs`, `index.css`, `index.js`
 - Templates use EJS with embedded CSS/JS content and OpenAPI data
+- Third-party UI libraries (Stoplight Elements, Swagger UI, Redoc, autoComplete.js, Redoc fonts) are devDependencies; `scripts/vendor.js` copies their built files into `resources/vendor/` (gitignored, but published to npm) and templates inline them via `vendor(name)`
 
 **Validation (`src/utils/validate.js`)**
 - Input validation for CLI commands and interactive prompts
@@ -53,6 +55,8 @@ This is a Node.js CLI tool that generates standalone HTML documentation from Ope
 - `src/utils/validate.js` - All input validation functions
 - `src/constants/index.js` - Configuration constants
 - `resources/{ui}/` - UI-specific templates and assets
+- `resources/vendor/` - Generated third-party assets (do not edit; regenerate with `npm run prepare`)
+- `scripts/vendor.js` - Builds `resources/vendor/` from node_modules
 - Tests are co-located with source files (e.g., `validate.test.js`)
 
 ### Testing

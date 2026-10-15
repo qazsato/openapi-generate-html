@@ -6,3 +6,4 @@ eslint.config.mjs
 .gitignore
 .claude/
 CLAUDE.md
+scripts/
